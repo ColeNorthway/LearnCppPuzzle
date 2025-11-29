@@ -13,42 +13,36 @@ namespace Input
 	}
 
 
-	void printError(char& usrIn);
-
-
 	inline void checkInput(char& usrIn)						//This will check the input against valid options
 	{
-		if (usrIn != 'w' &&
-			usrIn != 'a' &&
-			usrIn != 's' &&
-			usrIn != 'd' &&
-			usrIn != 'q'  )
+		while (true)
 		{
-			ignoreLine();
-			printError(usrIn);
+			if (!std::cin)
+			{
+				std::cin.clear();
+				ignoreLine();
+				std::cout << "That is an invalid input.  Try again: ";
+				std::cin >> usrIn;
+				continue;
+			}
+
+			if (usrIn != 'w' &&
+				usrIn != 'a' &&
+				usrIn != 's' &&
+				usrIn != 'd' &&
+				usrIn != 'q'  )
+			{
+				ignoreLine();
+				std::cout << "That is an invalid input.  Try again: ";
+				std::cin >> usrIn;
+			}
+			else 
+			{
+				ignoreLine();
+				return;
+			}
 		}
-
-		if (!std::cin)
-		{
-			std::cin.clear();
-			ignoreLine();
-			printError(usrIn);								//This ensures that we didn't straight up have a failure
-		}
-		
-
-		ignoreLine();
-		return;
 	}
-
-
-	inline void printError(char& usrIn)						//This will prompt an ask for reentry then rechecks
-	{
-		std::cout << "That is an invalid input.  Try again: ";
-		std::cin >> usrIn;
-		
-		checkInput(usrIn);
-	}
-
 }
 
 #endif

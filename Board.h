@@ -61,6 +61,8 @@ public:
 			m_coord.second += 1;								//Setting the 0 coord to new
 			m_arrV(row, col + 1) = temp;						//Setting old val to 0
 			break;
+		case 'q':
+			return;
 		default :
 			break;
 		}
