@@ -20,8 +20,59 @@ Step 1) Goal : Document the key requirements for this program
 
 
 Step 2) What primary classes or namespaces will you use to implement the items outlined in step1.
-	> Also what will your main() function do?
+	> ALL SHOULD BE IN FINISHED SECTION AS I STEPPED THROUGH THE DEV AND DECLUTTERED THIS AREA WHEN REFERENCING
+	namespace Input : Will check for failed input and reset (DONE)
+		> This handles all of the necessary checks to make sure that input is ignored that is unnecessary (DONE)
+		> Also handles the resets (DONE)
+		> Handles loops to keep prompting for valid input (DONE)
 
+
+
+
+Playbook
+	1) Get the main loop fleshed out (DONE)
+	2) Get the input fleshed out (DONE)
+	3) Get random (DONE)
+	4) Get the class and its member variables and function prototypes fleshed out (DONE)
+		1> We need to create the functions to access the flattened array as if it were 2d (DONE)
+			> One type def to <int, Row*Col>
+			> One class to be able to implement the logic
+		2> Print the 2d array (use column format for that) (DONE)
+		3> Do the logic to check the status if the board is completed or not (DONE)
+		4> Make the logic for round and moving val around the arr depending on usr input (DONE)
+			> First thing we need to prompt the user in main
+			> Then we need to have a private var with not access that is a pair<int, int> which is the location of the 0 (DONE)
+	5) Implement the functions in the class (DONE)
+	6) Fix input validation as its very buggy, it works kinda. (HERE)
+
+
+
+
+
+
+
+
+
+
+Finished
+	namespace Random : Will generate the random numbers ----------------------
+		> Will have a special function to populate the 2d array passed as a ref
+		> This function will have a loop and two arrays
+		> The first array will be a sorted std::vector of 1-15
+			> This is for the numbers to populate
+			> Called numVals
+		> The second array will be an array of indexes that have been assigned values
+			> Called assndIndexs
+			> Predetermined len array of len 15
+			> Loaded with value 0
+		> The function will pick a random index on the flattened array from 1-15 (ignoring 0 as that is empty)
+			> It will use a find algorithm to see if the index is in assndIndexes
+				> Use a lambda to pass to the alg if needed
+			> If the index isn't in there it will reget another index
+				> If the index isn't already in assndIndexes it will break the loop
+			> Then it will place the back number of numVals into that index
+			> Then it will pop that back of numVals
+			> Then it will place that index into assndIndexes
 	main() : Will implement the main game loop (Needs some more work)
 		> This basically entails the rounds (DONE)
 		> Just a while (usrIn != 'q' || gameStatus.status() == 'w') (DONE)
@@ -41,50 +92,3 @@ Step 2) What primary classes or namespaces will you use to implement the items o
 		> Will have a function called round(char 'usrIn') <4>
 			> This will actually read the input and then make a decision on what to do
 
-
-Playbook
-	1) Get the main loop fleshed out (DONE)
-	2) Get the input fleshed out (DONE)
-	3) Get random (DONE)
-	4) Get the class and its member variables and function prototypes fleshed out
-		1> We need to create the functions to access the flattened array as if it were 2d (DONE)
-			> One type def to <int, Row*Col>
-			> One class to be able to implement the logic
-		2> Print the 2d array (use column format for that) (DONE)
-		3> Do the logic to check the status if the board is completed or not (DONE)
-		4> Make the logic for round and moving val around the arr depending on usr input (DONE)
-			> First thing we need to prompt the user in main
-			> Then we need to have a private var with not access that is a pair<int, int> which is the location of the 0 (DONE)
-	5) Implement the functions in the class (DONE)
-
-
-
-
-
-
-
-
-
-Finished
-	namespace Input : Will check for failed input and reset (DONE)
-		> This handles all of the necessary checks to make sure that input is ignored that is unnecessary (DONE)
-		> Also handles the resets (DONE)
-		> Handles loops to keep prompting for valid input (DONE)
-	namespace Random : Will generate the random numbers ----------------------
-		> Will have a special function to populate the 2d array passed as a ref
-		> This function will have a loop and two arrays
-		> The first array will be a sorted std::vector of 1-15
-			> This is for the numbers to populate
-			> Called numVals
-		> The second array will be an array of indexes that have been assigned values
-			> Called assndIndexs
-			> Predetermined len array of len 15
-			> Loaded with value 0
-		> The function will pick a random index on the flattened array from 1-15 (ignoring 0 as that is empty)
-			> It will use a find algorithm to see if the index is in assndIndexes
-				> Use a lambda to pass to the alg if needed
-			> If the index isn't in there it will reget another index
-				> If the index isn't already in assndIndexes it will break the loop
-			> Then it will place the back number of numVals into that index
-			> Then it will pop that back of numVals
-			> Then it will place that index into assndIndexes
