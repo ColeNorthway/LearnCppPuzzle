@@ -1,0 +1,90 @@
+Goal : Defines the outcome that the step is trying to achieve
+Tasks : Provide detail and hints about how to implement the goal
+
+
+Step 1) Goal : Document the key requirements for this program
+	> Plan how your program will be structured at a high level
+	A) What are the top-level things that your program needs to do?
+		> Board Things
+			> Display the game board
+			> Calculate random numbers that don't overlap from 1-15
+			> Ensure that the top left hand corner starts our empty
+			> Can do periodic scans each round to see the state of the board
+			> Can recognize user input and implement swaps
+			> Can recognize a win
+			> Can recognize a quit
+		> User Things
+			> Prompt for user input each round
+			> Sanitize user input
+			> Obv we can't block all keystrokes to no result in a short amount of time so we have to implement looping
+
+
+Step 2) What primary classes or namespaces will you use to implement the items outlined in step1.
+	> Also what will your main() function do?
+
+	main() : Will implement the main game loop (Needs some more work)
+		> This basically entails the rounds (DONE)
+		> Just a while (usrIn != 'q' || gameStatus.status() == 'w') (DONE)
+		> Will call valIn namespace after each user input (DONE)
+		> Call the round function with the input
+	class Board : Implments the board logic ----------------------- (HERE)
+		> Will also have a status member variable (DONE)
+			> THis is the var that shows the game status
+		> Will have a board flattened 2d modern array as a member var <1>
+			> THis is the main var
+		> Will have a function called printBoard() <2>
+			> Do this next to check status later
+		> Will have a function called checkStatus() <3>
+			> Checks the status after each user input is successful and round() has executed
+			> Will see if the game is won
+			> If it is won it will print a message out and it will set the status
+		> Will have a function called round(char 'usrIn') <4>
+			> This will actually read the input and then make a decision on what to do
+
+
+Playbook
+	1) Get the main loop fleshed out (DONE)
+	2) Get the input fleshed out (DONE)
+	3) Get random (DONE)
+	4) Get the class and its member variables and function prototypes fleshed out
+		1> We need to create the functions to access the flattened array as if it were 2d (DONE)
+			> One type def to <int, Row*Col>
+			> One class to be able to implement the logic
+		2> Print the 2d array (use column format for that) (DONE)
+		3> Do the logic to check the status if the board is completed or not (DONE)
+		4> Make the logic for round and moving val around the arr depending on usr input (DONE)
+			> First thing we need to prompt the user in main
+			> Then we need to have a private var with not access that is a pair<int, int> which is the location of the 0 (DONE)
+	5) Implement the functions in the class (DONE)
+
+
+
+
+
+
+
+
+
+Finished
+	namespace Input : Will check for failed input and reset (DONE)
+		> This handles all of the necessary checks to make sure that input is ignored that is unnecessary (DONE)
+		> Also handles the resets (DONE)
+		> Handles loops to keep prompting for valid input (DONE)
+	namespace Random : Will generate the random numbers ----------------------
+		> Will have a special function to populate the 2d array passed as a ref
+		> This function will have a loop and two arrays
+		> The first array will be a sorted std::vector of 1-15
+			> This is for the numbers to populate
+			> Called numVals
+		> The second array will be an array of indexes that have been assigned values
+			> Called assndIndexs
+			> Predetermined len array of len 15
+			> Loaded with value 0
+		> The function will pick a random index on the flattened array from 1-15 (ignoring 0 as that is empty)
+			> It will use a find algorithm to see if the index is in assndIndexes
+				> Use a lambda to pass to the alg if needed
+			> If the index isn't in there it will reget another index
+				> If the index isn't already in assndIndexes it will break the loop
+			> Then it will place the back number of numVals into that index
+			> Then it will pop that back of numVals
+			> Then it will place that index into assndIndexes

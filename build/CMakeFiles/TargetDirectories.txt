@@ -1,0 +1,3 @@
+C:/Users/q/programs/learn_cpp_proj/21.Y-Project/build/CMakeFiles/Puzzle.dir
+C:/Users/q/programs/learn_cpp_proj/21.Y-Project/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/q/programs/learn_cpp_proj/21.Y-Project/build/CMakeFiles/ZERO_CHECK.dir

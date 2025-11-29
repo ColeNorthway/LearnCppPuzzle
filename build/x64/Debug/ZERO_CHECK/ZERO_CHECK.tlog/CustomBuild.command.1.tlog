@@ -1,0 +1,10 @@
+^C:\USERS\Q\PROGRAMS\LEARN_CPP_PROJ\21.Y-PROJECT\BUILD\CMAKEFILES\D74906FFB4B54E027F943902D3672794\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/q/programs/learn_cpp_proj/21.Y-Project -BC:/Users/q/programs/learn_cpp_proj/21.Y-Project/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/q/programs/learn_cpp_proj/21.Y-Project/build/Puzzle.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
