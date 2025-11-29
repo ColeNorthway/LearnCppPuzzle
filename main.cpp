@@ -20,6 +20,6 @@ int main()
 		board.round(usrIn);									//Doing a round
 	}
 
-	if (usrIn != 'q')
+	if (usrIn == 'q')
 		std::cout << "Congrats!!!!!";
 }
